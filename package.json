@@ -1,0 +1,19 @@
+{
+  "name": "cursor-blog",
+  "private": true,
+  "workspaces": [
+    "apps/*"
+  ],
+  "devDependencies": {
+    "concurrently": "^9.2.0"
+  },
+  "scripts": {
+    "dev": "concurrently -n api,web -c magenta,cyan \"npm run dev -w @cursor-blog/api\" \"npm run dev -w @cursor-blog/web\"",
+    "dev:web": "npm run dev -w @cursor-blog/web",
+    "dev:api": "npm run dev -w @cursor-blog/api",
+    "build": "npm run build -w @cursor-blog/api && npm run build -w @cursor-blog/web",
+    "start": "concurrently -n api,web -c magenta,cyan \"npm run start -w @cursor-blog/api\" \"npm run start -w @cursor-blog/web\"",
+    "lint": "npm run lint -w @cursor-blog/web",
+    "format": "npm run format -w @cursor-blog/api"
+  }
+}
